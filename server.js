@@ -8,7 +8,7 @@ var mime = {
 };
 req.setEncoding('utf8'); // 受信するレスポンスボディのエンコード形式をutf8に指定
 
-/*
+
 var http_server = new http.createServer(function(req, res) {
 
   if (req.url == '/') {
@@ -28,7 +28,5 @@ var http_server = new http.createServer(function(req, res) {
     }
   });
 }).listen(3000);
-*/
-server.listen(3000);
 
 console.log('Server running at http://localhost:3000/');
