@@ -6,7 +6,7 @@ var mime = {
   ".css":  "text/css"
   // 読み取りたいMIMEタイプはここに追記
 };
-req.setEncoding('utf8'); // 受信するレスポンスボディのエンコード形式をutf8に指定
+//req.setEncoding('utf8'); // 受信するレスポンスボディのエンコード形式をutf8に指定
 
 
 var http_server = new http.createServer(function(req, res) {
