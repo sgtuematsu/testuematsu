@@ -1,5 +1,11 @@
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
+var mime = {
+  ".html": "text/html",
+  ".css":  "text/css"
+  // 読み取りたいMIMEタイプはここに追記
+};
 
 var server = http.createServer();
 server.on('request', doRequest);
