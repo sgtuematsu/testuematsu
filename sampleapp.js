@@ -1,5 +1,5 @@
-var http = require('http');
-var fs = require('fs');
+var http = require('http'); //httpモジュール呼び出し
+var fs   = require('fs');
 var path = require('path');
 var mime = {
   ".html": "text/html",
@@ -7,17 +7,23 @@ var mime = {
   // 読み取りたいMIMEタイプはここに追記
 };
 
-var server = http.createServer();
-server.on('request', doRequest);
-server.listen(1234);
-console.log('Server running!');
+http.createServer(function (request, response) {
+    // リクエストを受けると以下のレスポンスを送信する
+    if (req.url == '/') {
+      filePath = '/sakasagaki.html';
+    } else {
+      filePath = req.url;
+    }
+    var fullPath = __dirname + filePath;
 
-// リクエストの処理
-function doRequest(req, res) {
-    fs.readFile('./sakasagaki.html', 'UTF-8',
-        function(err, data) {
-            res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-            res.write(data);
-            res.end();
-        });
-}
+    res.writeHead(200, {"Content-Type": mime[path.extname(fullPath)] || 'text/html; charset=utf-8'});
+    //console.log(request.headers.referer);
+    fs.readFile(fullPath, function(err, data) {
+      if (err) {
+        // エラー時の応答
+      } else {
+        res.end(data, 'UTF-8');
+      }
+    });
+  }
+).listen(process.env.PORT || 8080); //公開ポートで待ち受け
