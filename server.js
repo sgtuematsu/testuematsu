@@ -19,7 +19,7 @@ var http_server = new http.createServer(function(req, res) {
   var fullPath = __dirname + filePath;
 
   res.writeHead(200, {"Content-Type": mime[path.extname(fullPath)] || 'text/html; charset=utf-8'});
-  console.log(request.headers.referer);
+  //console.log(request.headers.referer);
   fs.readFile(fullPath, function(err, data) {
     if (err) {
       // エラー時の応答
