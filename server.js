@@ -1,4 +1,4 @@
-var http = require('http');
+var http = require('http'); //require関数でインスタンスhttp(白字)はオブジェクトhttp(緑字)から作ると定義している
 var fs   = require('fs');
 var path = require('path');
 var mime = {
