@@ -9,20 +9,20 @@ var mime = {
 
 http.createServer(function (request, response) {
     // リクエストを受けると以下のレスポンスを送信する
-    if (req.url == '/') {
+    if (request.url == '/') {
       filePath = '/sakasagaki.html';
     } else {
-      filePath = req.url;
+      filePath = request.url;
     }
     var fullPath = __dirname + filePath;
 
-    res.writeHead(200, {"Content-Type": mime[path.extname(fullPath)] || 'text/html; charset=utf-8'});
+    response.writeHead(200, {"Content-Type": mime[path.extname(fullPath)] || 'text/html; charset=utf-8'});
     //console.log(request.headers.referer);
     fs.readFile(fullPath, function(err, data) {
       if (err) {
         // エラー時の応答
       } else {
-        res.end(data, 'UTF-8');
+        response.end(data, 'UTF-8');
       }
     });
   }
